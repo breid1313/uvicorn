@@ -68,6 +68,8 @@ def subprocess_started(
     * stdin_fileno - The file number of sys.stdin, so that it can be reattached
                      to the child process.
     """
+    from opentelemetry.instrumentation.auto_instrumentation import sitecustomize  # noqa
+
     # Re-open stdin.
     if stdin_fileno is not None:
         sys.stdin = os.fdopen(stdin_fileno)  # pragma: full coverage
